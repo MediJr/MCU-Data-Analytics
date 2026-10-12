@@ -19,7 +19,7 @@ df = pd.read_csv("marvel_movies_dataset_clean.csv")
 
 # On calcule les principaux indicateurs commerciaux du catalogue.
 # Pourquoi ?
-# Le client souhaite comprendre la performance commerciale
+# Objectif : comprendre la performance commerciale
 # globale des films du MCU.
 
 boxoffice_total = df["worldwide_box_office_millions"].sum()
@@ -156,7 +156,7 @@ print(top_rentabilite.to_string(index=False))
 
 # On regroupe les films par phase.
 # Pourquoi ?
-# Le client souhaite comparer les performances des différentes
+# Objectif : comparer les performances des différentes
 # phases du MCU.
 
 performance_phases = (
@@ -184,7 +184,7 @@ print(performance_phases)
 
 # On calcule les moyennes des trois indicateurs critiques.
 # Pourquoi ?
-# Le client souhaite comparer la réception critique du catalogue.
+# Objectif : comparer la réception critique du catalogue.
 
 imdb_moyen = df["imdb_rating"].mean()
 rotten_tomatoes_moyen = df["rotten_tomatoes"].mean()
@@ -282,7 +282,7 @@ print(notes_par_phase)
 
 # On mesure la corrélation entre le budget et le box-office.
 # Pourquoi ?
-# Le client souhaite étudier la relation entre les investissements
+# Objectif : étudier la relation entre les investissements
 # réalisés et les recettes générées.
 
 correlation_budget_boxoffice = (
@@ -374,7 +374,7 @@ print(
 
 # On calcule le box-office moyen par année.
 # Pourquoi ?
-# Le client souhaite comprendre les tendances de performance
+# Objectif : comprendre les tendances de performance
 # du catalogue dans le temps.
 
 boxoffice_par_annee = (

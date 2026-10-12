@@ -1,68 +1,79 @@
-# Marvel Cinematic Universe (MCU) Movies Dataset
+# MCU Data Analytics — Commercial and Critical Performance of Marvel Films
 
-## Overview
-This dataset contains comprehensive information about all Marvel Cinematic Universe movies from 2008 to 2024.
+Personal data analysis project on the commercial and critical performance of **34 Marvel Cinematic Universe (MCU) films released between 2008 and 2024** (Phases 1 to 5, from *Iron Man* to *Deadpool & Wolverine*).
 
-## Dataset Contents
-- **34 movies** spanning Phases 1-5 of the MCU
-- **20+ features** including box office performance, ratings, and cast information
+The analysis is framed by a fictional business brief written for practice. It is not client work.
 
-## Features
-| Column Name | Description |
-|------------|-------------|
-| movie_id | Unique identifier for each movie (MCU_001 to MCU_034) |
-| movie_title | Official movie title |
-| release_date | Original release date |
-| release_year | Year of release |
-| mcu_timeline_order | Chronological order in the MCU |
-| phase | MCU Phase (1-5) |
-| phase_number | Numeric phase value |
-| director | Director(s) of the movie |
-| lead_actor | Main actor/actress |
-| runtime_minutes | Movie duration in minutes |
-| production_budget_millions | Production budget in USD millions |
-| worldwide_box_office_millions | Worldwide box office gross in USD millions |
-| domestic_box_office_millions | Domestic (US/Canada) box office gross in USD millions |
-| profit_millions | Profit = Worldwide box office - Production budget |
-| roi_percentage | Return on Investment percentage |
-| domestic_percentage | Domestic box office as percentage of worldwide |
-| imdb_rating | IMDb user rating (out of 10) |
-| rotten_tomatoes | Rotten Tomatoes critic score (percentage) |
-| metacritic_score | Metacritic critic score (out of 100) |
-| storyline | Brief plot description |
+## Workflow
 
-## Potential Use Cases
-- Box office performance analysis
-- Rating comparison across phases
-- Director/actor performance analysis
-- Profitability trends in superhero movies
-- Machine learning (predicting box office success)
-- Data visualization projects
+| Step | Tool | File |
+|---|---|---|
+| Profiling and data-quality checks | Python / Pandas | [`01_profilage.py`](01_profilage.py) |
+| Cleaning (`release_date` converted to a date type) | Python / Pandas | [`02_nettoyage.py`](02_nettoyage.py) |
+| Exploratory data analysis and charts | Python / Pandas / Matplotlib | [`03_eda.py`](03_eda.py) |
+| Key indicators and insights | Python / Pandas | [`04_insights.py`](04_insights.py) |
+| Star-schema model, DAX measures and dashboard | Power BI Desktop | [`PowerBI_Source/MCU_Data_Analytics.pbix`](PowerBI_Source/MCU_Data_Analytics.pbix) |
+| Analysis report (French and English) | LaTeX | [`PowerBI_Source/utbmciad-report/`](PowerBI_Source/utbmciad-report/) |
 
-## Data Sources
-- IMDb for ratings
-- Box Office Mojo for financial data
-- Rotten Tomatoes for critic scores
-- Wikipedia for movie information
+The Python scripts and the reports are written in French; an English version of the report is provided.
 
-## License
-This dataset is provided for educational and research purposes.
+## Dataset
 
-## Last Updated
-Generated on 2026-07-26 12:01:50
+- 34 films, 20 columns: release dates, MCU phase, director, lead actor, runtime, production budget, worldwide and domestic box office, profit, ROI, IMDb, Rotten Tomatoes and Metacritic scores.
+- Public dataset downloaded from Kaggle. Its bundled documentation ([`DATASET_README.md`](DATASET_README.md), [`data_dictionary.csv`](data_dictionary.csv)) lists IMDb, Box Office Mojo, Rotten Tomatoes and Wikipedia as sources. The values are used as provided and were not re-checked against those sources.
+- Files: [`marvel_movies_dataset.csv`](marvel_movies_dataset.csv) (raw data used by the scripts), plus the same data in `.json` and `.xlsx`; [`PowerBI_Source/marvel_movies_dataset_clean.csv`](PowerBI_Source/marvel_movies_dataset_clean.csv) (cleaned output of `02_nettoyage.py`, used by Power BI).
+- Data-quality checks in `01_profilage.py`: no missing values, no duplicates, 34 unique IDs, consistent phase / date fields, and profit, ROI and domestic share consistent with their formulas.
 
-## Files Included
-1. marvel_movies_dataset.csv - Main dataset in CSV format
-2. marvel_movies_dataset.json - Main dataset in JSON format
-3. marvel_movies_dataset.xlsx - Main dataset in Excel format
-4. data_dictionary.csv - Explanation of all columns
-5. this README.md file
+## Key findings
 
-## Quick Statistics
-- Total Budget: $6947 million
-- Total Box Office: $31129 million
-- Average Rating: 7.26/10
-- Average Runtime: 132 minutes
-- Average ROI: 339.6%
-- Highest Grossing: Avengers: Endgame ($2798M)
-- Best Rated: Avengers: Infinity War (8.4/10)
+Figures produced by `04_insights.py` (amounts in millions of US dollars):
+
+- Total production budget 6,947; total worldwide box office 31,129; total calculated profit 24,182.
+- Average ROI per film 339.58 %; overall ROI (total profit / total budget) 348.09 %.
+- Phase 3 has the highest average worldwide box office (1,227.27), the highest overall ROI (481.65 %) and the highest average critic scores. Phase 5 has the lowest overall ROI (186.50 %).
+- Correlation with worldwide box office: production budget 0.63, IMDb rating 0.66, Rotten Tomatoes 0.44, Metacritic 0.42.
+
+These are descriptive associations on 34 films, not causal effects. "Profit" here is worldwide box office minus production budget: it excludes marketing, distribution and other costs, so it is not studio accounting profit.
+
+## How to run
+
+Requirements: Python 3 and the packages in [`requirements.txt`](requirements.txt).
+
+```bash
+git clone https://github.com/MediJr/MCU-Data-Analytics.git
+cd MCU-Data-Analytics
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+Run the scripts from the repository root, in this order:
+
+```bash
+python 01_profilage.py
+python 02_nettoyage.py
+python 03_eda.py
+python 04_insights.py
+```
+
+- `02_nettoyage.py` writes `marvel_movies_dataset_clean.csv` at the repository root; `03_eda.py` and `04_insights.py` read that file, so run step 2 first.
+- `03_eda.py` opens seven Matplotlib windows one after another; close each window to continue.
+- On Windows, if you redirect the output to a file, run the scripts with `python -X utf8` to avoid encoding errors on accented characters and arrows.
+- `analysis_script.py` is the example script shipped with the dataset. It is not part of this project's pipeline and also needs `seaborn`.
+
+## Power BI dashboard
+
+Open `PowerBI_Source/MCU_Data_Analytics.pbix` in Power BI Desktop. The model is a star schema (`Fact_Movie`, `Dim_Movie`, `Dim_Phase`, `Dim_Date`) with DAX measures such as total box office, total profit, overall ROI and average critic scores. If Power BI cannot find the source file, point the data source to `PowerBI_Source/marvel_movies_dataset_clean.csv`.
+
+The dashboard screenshot in the reports ([`figures/01_dashboard_global.png`](PowerBI_Source/utbmciad-report/figures/01_dashboard_global.png)) was captured with Phase 3 selected.
+
+## Reports
+
+- French: [`MCU_Analyse_Performances_Commerciales_Critiques_FR.pdf`](PowerBI_Source/utbmciad-report/MCU_Analyse_Performances_Commerciales_Critiques_FR.pdf)
+- English: [`MCU_Commercial_Critical_Performance_Analysis_EN.pdf`](PowerBI_Source/utbmciad-report/MCU_Commercial_Critical_Performance_Analysis_EN.pdf)
+
+Build instructions are in [`PowerBI_Source/utbmciad-report/README.md`](PowerBI_Source/utbmciad-report/README.md).
+
+## Author
+
+Lumu Bamana Manassé — [github.com/MediJr](https://github.com/MediJr)

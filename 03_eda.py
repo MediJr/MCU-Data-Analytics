@@ -61,7 +61,7 @@ print(df.describe().round(2))
 # synthétique du catalogue.
 # Pourquoi ?
 # Ces indicateurs pourront être réutilisés plus tard dans
-# le dashboard destiné à la direction.
+# le dashboard Power BI.
 
 print("\n============================================================")
 print("INDICATEURS CLÉS")
@@ -230,7 +230,7 @@ print(top_roi.to_string(index=False))
 # On calcule les principaux indicateurs statistiques des trois
 # systèmes de notation.
 # Pourquoi ?
-# Le client souhaite comparer les performances critiques du catalogue.
+# Objectif : comparer les performances critiques du catalogue.
 
 notes = df[
     [
@@ -285,7 +285,7 @@ print(
 # On mesure la corrélation entre le budget de production
 # et le box-office mondial.
 # Pourquoi ?
-# Le client souhaite savoir si les investissements sont associés
+# Objectif : savoir si les investissements sont associés
 # aux recettes générées.
 
 correlation_budget_boxoffice = (
@@ -368,7 +368,7 @@ print(
 
 # On calcule les performances moyennes de chaque phase.
 # Pourquoi ?
-# Le client souhaite comparer les performances des différentes
+# Objectif : comparer les performances des différentes
 # phases du MCU.
 
 performance_par_phase = (
@@ -471,7 +471,7 @@ plt.show()
 
 # On compare visuellement le ROI moyen des différentes phases.
 # Pourquoi ?
-# Le graphique permet à la direction d'identifier rapidement
+# Le graphique permet d'identifier rapidement
 # les phases les plus et les moins rentables.
 
 plt.figure(figsize=(8, 5))
@@ -658,7 +658,7 @@ print("EDA TERMINÉE")
 print("============================================================")
 
 print(
-    "\nLes principales dimensions demandées par le client ont été "
+    "\nLes principales dimensions retenues pour l'analyse ont été "
     "explorées : performance commerciale, performance critique, "
     "investissement, recettes, rentabilité, comparaison des phases "
     "et évolution temporelle."

@@ -1,21 +1,26 @@
-# UTBM CIAD report
+# MCU analysis report (LaTeX)
 
-This neutral scientific and technical report starter follows the structure of
-the `utbmciad-report` class: a metadata front page, change history, structured
-sections, definitions, findings, and a recommendations register.
+LaTeX sources of the MCU analysis report:
 
-The example deliberately omits institutional logos. The upstream class source
-is LGPLv3, but its university and laboratory logos are separately owned and
-may only be redistributed unchanged in the original package context. This
-starter is therefore portable and uses standard TeX Live classes instead of
-bundling those restricted assets.
+| Source | PDF | Language |
+|---|---|---|
+| `main.tex` | `MCU_Analyse_Performances_Commerciales_Critiques_FR.pdf` | French |
+| `main_en.tex` | `MCU_Commercial_Critical_Performance_Analysis_EN.pdf` | English |
 
-Edit the metadata and replace the fictional project content in `main.tex`.
+Figures (Power BI screenshots) are in `figures/`. Both versions contain the same sections and figures.
 
-Upstream: https://ctan.org/pkg/utbmciad-report
+## Build
 
-## Licence
+The reports compile with XeLaTeX. Run it three times so that the table of contents is up to date, then rename the output:
 
-The upstream LaTeX source is LGPL-3.0; logo files have separate institutional
-terms. This starter contains no upstream logos or class files. Verify current
-upstream terms before incorporating institutional artwork.
+```bash
+xelatex main.tex
+xelatex main.tex
+xelatex main.tex
+```
+
+`main.pdf` is then copied to `MCU_Analyse_Performances_Commerciales_Critiques_FR.pdf`; do the same with `main_en.tex` for the English PDF.
+
+## Template
+
+The layout started from a neutral starter that follows the structure of the `utbmciad-report` class (upstream: https://ctan.org/pkg/utbmciad-report). It uses standard classes only; no upstream class files or institutional logos are included. The upstream LaTeX source is LGPL-3.0, and its logo files have separate institutional terms.
