@@ -111,7 +111,9 @@ statistiques et non comme des relations de causalité.
 
 \section{Objectifs de l'analyse}
 
-L'analyse répond au brief métier suivant :
+Ce projet est un projet personnel. Pour structurer l'analyse, il s'appuie sur
+le brief métier fictif suivant, rédigé comme cadre de travail (il ne s'agit
+pas d'une mission réalisée pour un client) :
 
 \begin{quote}
 \og Nous souhaitons analyser les performances commerciales et critiques des
@@ -296,10 +298,16 @@ Les principaux indicateurs du catalogue sont les suivants :
   \bottomrule
 \end{tabularx}
 
+La capture du dashboard ci-dessous a été réalisée avec la Phase~3
+sélectionnée : les cartes d'indicateurs affichent donc les valeurs de cette
+phase (11 films, 13~500~M\$ de box-office mondial, 11~179~M\$ de profit,
+note IMDb moyenne de 7,59) et non celles de l'ensemble du catalogue, qui
+figurent dans le tableau ci-dessus.
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\linewidth,keepaspectratio]{01_dashboard_global.png}
-  \caption{Dashboard global MCU}
+  \caption{Dashboard Power BI MCU (Phase~3 sélectionnée)}
   \label{fig:dashboard-global}
 \end{figure}
 
@@ -363,8 +371,10 @@ performance commerciale globale du catalogue.
 L'évolution annuelle fait apparaître des variations importantes de la
 performance commerciale moyenne au cours de la période étudiée.
 
-Les niveaux les plus élevés sont notamment observés autour de 2018--2019,
-avec une nouvelle progression en 2024 dans le dataset.
+Les moyennes annuelles les plus élevées concernent 2019 (1~686~M\$),
+2012 (1~518~M\$), 2018 (1~338,67~M\$) et 2024 (1~338~M\$). Chaque année ne
+compte qu'un à quatre films, et aucun film n'est sorti en 2020 : ces moyennes
+annuelles dépendent donc fortement de quelques titres.
 
 L'évolution n'est donc pas linéaire : plusieurs périodes de progression et
 de baisse sont observées.
@@ -392,13 +402,16 @@ Les résultats par phase sont :
   \toprule
   \textbf{Phase} & \textbf{ROI global} \\
   \midrule
-  Phase 1 & 259,83~\% \\
-  Phase 2 & 370,00~\% \\
-  Phase 3 & 464,57~\% \\
-  Phase 4 & 278,85~\% \\
-  Phase 5 & 176,10~\% \\
+  Phase 1 & 280,90~\% \\
+  Phase 2 & 383,12~\% \\
+  Phase 3 & 481,65~\% \\
+  Phase 4 & 270,38~\% \\
+  Phase 5 & 186,50~\% \\
   \bottomrule
 \end{tabularx}
+
+Sur l'ensemble du catalogue, le ROI global vaut 348,09~\%
+(24~182 / 6~947), contre 339,58~\% pour la moyenne des ROI individuels.
 
 La Phase~3 présente ainsi le ROI global le plus élevé parmi les cinq phases
 étudiées.
@@ -727,7 +740,7 @@ dimensions commerciales, financières, critiques et temporelles du problème.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\linewidth,keepaspectratio]{01_dashboard_global.png}
-  \caption{Tableau de bord Power BI final}
+  \caption{Tableau de bord Power BI final (Phase~3 sélectionnée)}
   \label{fig:dashboard-final}
 \end{figure}
 
