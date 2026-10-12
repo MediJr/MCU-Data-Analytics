@@ -65,7 +65,9 @@ python 04_insights.py
 
 Open `PowerBI_Source/MCU_Data_Analytics.pbix` in Power BI Desktop. The model is a star schema (`Fact_Movie`, `Dim_Movie`, `Dim_Phase`, `Dim_Date`) with DAX measures such as total box office, total profit, overall ROI and average critic scores. If Power BI cannot find the source file, point the data source to `PowerBI_Source/marvel_movies_dataset_clean.csv`.
 
-The dashboard screenshot in the reports ([`figures/01_dashboard_global.png`](PowerBI_Source/utbmciad-report/figures/01_dashboard_global.png)) was captured with Phase 3 selected.
+Dashboard overview (all 34 films, no filter):
+
+![Power BI dashboard](PowerBI_Source/utbmciad-report/figures/01_dashboard_global.png)
 
 ## Reports
 
